@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Proxmox VM Manual Backup Guide!"
-date: 2024-08-30 18:00:00 +0200
+date: 2024-08-30 18:15:00 +0200
 categories: self-hosted homelab proxmox linux
 tags: homelab proxmox linux cli
 image:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to update Snap Store!"
-date: 2024-08-30 17:50:00 +0200
+date: 2024-08-30 18:45:00 +0200
 categories: self-hosted homelab linux
 tags: homelab linux ubuntu cli
 image:
