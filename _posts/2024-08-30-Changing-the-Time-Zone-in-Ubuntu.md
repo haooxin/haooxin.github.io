@@ -5,12 +5,10 @@ date: 2024-08-30 14:06:00 +0200
 categories: self-hosted homelab
 tags: homelab ubuntu cli
 image:
-  path: /assets/img/headers/home-server-room.webp
+  path: /assets/img/headers/clock-and-server-room.webp
   lqip: 
 
 ---
-
-# Changing the Time Zone in Ubuntu
 
 This guide will assist you in changing the time zone on your Ubuntu system. Changing the time zone may be necessary when you move to a new location or manage servers located in different time zones.
 
