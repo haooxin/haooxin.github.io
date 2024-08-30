@@ -4,6 +4,9 @@ title: "Changing the Time Zone in Ubuntu!"
 date: 2024-08-30 14:06:00 +0200
 categories: self-hosted homelab
 tags: homelab ubuntu cli
+image:
+  path: /assets/img/headers/home-server-room.webp
+  lqip: 
 
 ---
 
