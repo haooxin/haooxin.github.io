@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to update Windows using PSWindowsUpdate"
-date: 2024-08-30 17:50:00 +0200
+date: 2024-08-30 20:50:00 +0200
 categories: Windows
 tags: Windows PowerShell Update
 image:
