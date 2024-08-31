@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to update Snap Store!"
+title: "How to update Snap Store"
 date: 2024-08-30 17:50:00 +0200
 categories: self-hosted homelab proxmox linux
 tags: homelab proxmox linux cli

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to create Proxmox VM template!"
+title: "How to create Proxmox VM template"
 date: 2024-08-30 18:00:00 +0200
 categories: self-hosted homelab proxmox linux
 tags: homelab proxmox linux cli
