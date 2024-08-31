@@ -2,7 +2,7 @@
 layout: post
 title: "How to update Snap Store"
 date: 2024-08-30 18:45:00 +0200
-categories: self-hosted homelab linux
+categories: linux
 tags: homelab linux ubuntu cli
 image:
   path: /assets/img/headers/Linux-system.webp

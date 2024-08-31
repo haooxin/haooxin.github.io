@@ -2,7 +2,7 @@
 layout: post
 title: "Proxmox VM Manual Backup Guide"
 date: 2024-08-30 18:15:00 +0200
-categories: self-hosted homelab proxmox linux
+categories: proxmox
 tags: homelab proxmox linux cli
 image:
   path: /assets/img/headers/virtual-machines2.webp

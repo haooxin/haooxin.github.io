@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Changing the Time Zone in Ubuntu."
+title: "Changing the Time Zone in Ubuntu"
 date: 2024-08-30 14:06:00 +0200
-categories: self-hosted homelab
-tags: homelab ubuntu cli
+categories: linux
+tags: homelab ubuntu linux cli
 image:
   path: /assets/img/headers/clock-and-server-room.webp
   lqip: 

@@ -2,7 +2,7 @@
 layout: post
 title: "How to update Snap Store"
 date: 2024-08-30 17:50:00 +0200
-categories: self-hosted homelab proxmox linux
+categories: proxmox 
 tags: homelab proxmox linux cli
 image:
   path: /assets/img/headers/Proxmox-server-room.webp
