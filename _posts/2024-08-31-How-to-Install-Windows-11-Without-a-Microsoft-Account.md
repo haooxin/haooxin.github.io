@@ -1,3 +1,15 @@
+---
+layout: post
+title: "How to Install Windows 11 Without a Microsoft Account"
+date: 2024-08-31 17:45:00 +0200
+categories: Windows
+tags: Windows Installation OOBE
+image:
+  path: /assets/img/headers/Windows4.webp
+  lqip: 
+
+---
+
 By default, users must log in with a Microsoft account to install Windows 11 or go through the Out of the Box (OOBE) setup process, which runs the first time they turn on a new laptop or desktop computer. If you want to use a local account and don't want to use a Microsoft account or your computer won't have Internet access, just follow a few simple steps.
 
 ## How to Install Windows 11 Without a Microsoft Account
