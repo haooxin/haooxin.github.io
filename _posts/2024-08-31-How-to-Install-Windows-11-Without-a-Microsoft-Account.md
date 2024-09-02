@@ -14,8 +14,6 @@ By default, users must log in with a Microsoft account to install Windows 11 or 
 
 ## How to Install Windows 11 Without a Microsoft Account
 
-There's a simple trick for setting up a local account that involves issuing a command to keep Windows from requiring Internet to install / set up and then cutting off Internet at just the right time in the setup process. This works the same way whether you are doing a clean install of Windows 11 or following the OOBE process on a store-bought computer.
-
 1. **Follow the Windows 11 install process until you get to the "choose a country" screen.**
 
 ![OOBE1](/assets/img/posts/2024-08-31-OOBE/OOBE1.png)
