@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Install Windows 11 on Proxmox VE"
-date: 2024-09-01 20:15:00 +0200
+date: 2024-09-02 20:15:00 +0200
 categories: Windows Proxmox
 tags: Windows Proxmox VM Installation OOBE
 image:
