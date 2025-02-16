@@ -8,7 +8,9 @@ order: 4
 
 # 👋 Hi! ( ͡° ͜ʖ ͡°)
 
-**I'm Daniel and I'm passionate about creating network services and network technologies. In short, I'm a Homelab nerd.**
+**I'm Daniel and I'm passionate about creating network services and network technologies. 
+This knowledge base is a curated collection of insights gained from building my homelab and overcoming daily challenges.
+In short, I'm a Homelab nerd.**
 - 🌱 I’m currently learning to automate processes using Ansible, Terraform.
 
 ## My Stats
