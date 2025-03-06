@@ -282,7 +282,6 @@ Notes:
 **1. Create the share directory:**
 
 ```bash
-Kopiuj
 sudo mkdir -p /srv/private
 ```
 
@@ -443,7 +442,6 @@ group:          compat winbind
 To apply all changes, restart the Samba and Winbind services:
 
 ```bash
-
 sudo systemctl restart smbd nmbd winbind
 ```
 
@@ -567,6 +565,8 @@ If issues arise, review the logs in `/var/log/samba/` and ensure that:
 - Your filesystem is mounted with ACL support (if using `acl_xattr`).
 - System users and Samba accounts are correctly configured.
 - For AD integration, Kerberos and Winbind are functioning properly.
+- [Windows issues](https://learn.microsoft.com/pl-pl/troubleshoot/windows-client/networking/cannot-access-shared-folder-file-explorer)
+
 
 ---
 
