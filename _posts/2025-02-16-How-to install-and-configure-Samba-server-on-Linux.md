@@ -559,7 +559,9 @@ smbclient -L localhost -U username
 - **From a Windows or Other Client:**
 Connect to the share using the UNC path (e.g., `\\UBUNTUSERVER\private`) and appropriate credentials.
 
-**4. Troubleshooting:**
+---
+
+### 9. Troubleshooting
 If issues arise, review the logs in `/var/log/samba/` and ensure that:
 
 - Your filesystem is mounted with ACL support (if using `acl_xattr`).
@@ -570,7 +572,7 @@ If issues arise, review the logs in `/var/log/samba/` and ensure that:
 
 ---
 
-### 9. Summary
+### 10. Summary
 
 In this advanced guide, we covered:
 
