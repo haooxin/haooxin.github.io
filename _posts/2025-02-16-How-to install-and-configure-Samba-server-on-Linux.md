@@ -28,6 +28,8 @@ sudo apt update
 sudo apt install samba
 ```
 
+---
+
 ### 2. Configure the Shared Resource
 
 **1. Create the directory you want to share:**
