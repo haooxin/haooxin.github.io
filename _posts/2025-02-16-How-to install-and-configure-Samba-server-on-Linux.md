@@ -11,7 +11,6 @@ image:
 ---
 
 
----
 
 ## Simple Instalation
 
