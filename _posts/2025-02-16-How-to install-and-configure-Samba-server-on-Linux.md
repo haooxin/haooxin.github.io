@@ -160,7 +160,7 @@ write list = user1, user2
 
 ---
 
-### Troubleshooting
+### 7. Troubleshooting
 
 If issues arise, review the logs in `/var/log/samba/` and ensure that:
 
@@ -169,7 +169,7 @@ If issues arise, review the logs in `/var/log/samba/` and ensure that:
 
 ---
 
-### Summary
+### 8. Summary
 
 After completing the above steps, your Samba server should be properly configured. System users added to the Ubuntu system and the Samba database will have access to the shared resources according to the permissions set in the configuration. To test access, you can connect to the share from a Windows machine or another network client using the appropriate credentials.
 
