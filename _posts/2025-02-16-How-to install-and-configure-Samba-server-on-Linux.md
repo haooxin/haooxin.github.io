@@ -160,6 +160,15 @@ write list = user1, user2
 
 ---
 
+### Troubleshooting
+
+If issues arise, review the logs in `/var/log/samba/` and ensure that:
+
+- System users and Samba accounts are correctly configured.
+- [Troubleshoot problems accessing shared folders on Windows.](https://learn.microsoft.com/pl-pl/troubleshoot/windows-client/networking/cannot-access-shared-folder-file-explorer)
+
+---
+
 ### Summary
 
 After completing the above steps, your Samba server should be properly configured. System users added to the Ubuntu system and the Samba database will have access to the shared resources according to the permissions set in the configuration. To test access, you can connect to the share from a Windows machine or another network client using the appropriate credentials.
@@ -562,12 +571,13 @@ Connect to the share using the UNC path (e.g., `\\UBUNTUSERVER\private`) and app
 ---
 
 ### 9. Troubleshooting
+
 If issues arise, review the logs in `/var/log/samba/` and ensure that:
 
 - Your filesystem is mounted with ACL support (if using `acl_xattr`).
 - System users and Samba accounts are correctly configured.
 - For AD integration, Kerberos and Winbind are functioning properly.
-- [Windows issues](https://learn.microsoft.com/pl-pl/troubleshoot/windows-client/networking/cannot-access-shared-folder-file-explorer)
+- [Troubleshoot problems accessing shared folders on Windows.](https://learn.microsoft.com/pl-pl/troubleshoot/windows-client/networking/cannot-access-shared-folder-file-explorer)
 
 
 ---
