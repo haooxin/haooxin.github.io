@@ -11,8 +11,11 @@ image:
 ---
 
 
+---
 
 ## Simple Instalation
+
+---
 
 ### 1. Install Samba
 
@@ -287,6 +290,8 @@ Notes:
 ---
 
 ### 3. Advanced Share Configuration
+
+---
 
 #### A. Private Share with Access Control (ACLs and File Masks)
 
