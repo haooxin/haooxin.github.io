@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "Intel NIC e1000e hardware unit hang"
