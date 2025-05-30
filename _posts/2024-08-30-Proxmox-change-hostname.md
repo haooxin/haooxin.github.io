@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to update Snap Store"
+title: "How to rename a PVE node"
 date: 2024-08-30 17:50:00 +0200
 categories: proxmox 
 tags: homelab proxmox linux cli
@@ -9,9 +9,6 @@ image:
   lqip: 
 
 ---
-
-# Renaming a PVE node
-
 
 Proxmox VE uses the hostname as a nodes name, so changing it works similar to changing the host name. This must be done on a empty node.
 
