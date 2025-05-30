@@ -105,8 +105,8 @@ ethtool -s eno1 speed 1000 duplex full autoneg off
 
 Make sure you’re on the **latest kernel** or install the **Intel out-of-tree drivers** from:
 
-- https://downloadcenter.intel.com
-
+- [Intel Download Center](https://downloadcenter.intel.com)
+  
 The in-kernel driver sometimes lags behind Intel’s latest releases.
 
 ---
