@@ -58,6 +58,115 @@ This indicates the card’s transmit queue has stalled — it’s unable to clea
 
 ---
 
+## How to Read *Hardware Unit Hang* Logs
+
+### 1. Log header
+
+`e1000e 0000:00:1f.6 eno1: Detected Hardware Unit Hang`
+
+The **e1000e** driver (Intel PRO/1000) has detected that the network-card hardware transmit unit (TX unit) on PCI bus **0000:00:1f.6** – interface **eno1** – has “hung,” meaning it stopped emptying its packet queue. The same pattern appears in Red Hat guides and kernel.org bug reports. [Red Hat Customer Portal](https://access.redhat.com/solutions/63042) [bugzilla.kernel.org](https://bugzilla.kernel.org/show_bug.cgi?id=118721)
+
+---
+
+### 2. Transmit-queue pointers
+
+```
+TDH <42>
+TDT <6b>
+next_to_use <6b>
+next_to_clean <41>
+```
+
+|Pointer|Role|Hex value (dec)|Meaning here|
+|---|---|---|---|
+|**TDH**|Head seen by hardware|0x42 (66)|Hardware stopped on descriptor 66|
+|**TDT**|Tail set by driver|0x6b (107)|Driver queued packets up to 107|
+|**next_to_use**|Driver’s internal counter|0x6b (107)|Matches TDT – driver finished filling|
+|**next_to_clean**|First descriptor that **should** return|0x41 (65)|Last cleaned packet was 65|
+
+The difference **TDT – TDH = 0x29 (41)** shows 41 descriptors waiting – the card is not processing data, hence the “hang.”
+
+---
+
+### 3. Details of the blocked packet’s descriptor
+
+```
+buffer_info[next_to_clean]:
+    time_stamp <101debc3e>
+    next_to_watch <42>
+    jiffies <101dec140>
+    next_to_watch.status <0>
+```
+
+- **time_stamp** – moment the packet was queued (jiffies). 
+- **jiffies** – current kernel timer. The gap of ~1282 ticks ≈ 5 s (with HZ = 250) is well beyond the safety threshold. 
+- **next_to_watch.status = 0** – hardware never set the “DD” (Descriptor Done) bit, so the packet was not sent.
+
+---
+
+### 4. MAC-layer status
+
+`MAC Status <80083>`
+
+Rejestr **STATUS** kontrolera:
+
+- **bit 0 (0x1) – Link Up** – link is active.
+- **bit 1 (0x2) – FDX** – full duplex
+- **bit 7-19 (0x80000)** – "Tx/Rx unit stalled" for many 8257x/219 families.  
+    Summary: card sees 1 Gbps FDX link, but reports its own jamming. [bugzilla.kernel.org](https://bugzilla.kernel.org/show_bug.cgi?id=118721)
+
+---
+
+### 5. PHY layer
+
+```
+PHY Status            <796d> 
+PHY 1000BASE-T Status <3800> 
+PHY Extended Status   <3000>
+```
+
+The hex codes confirm:
+- **Autonegotiation complete & link OK**
+- **Operating at 1000 Mb/s**
+- No transmitter/receiver physical errors.
+
+Thus the physical link is healthy; the issue is higher, in the TX unit.
+
+---
+
+### 6. PCI status
+
+`PCI Status <10>`
+
+0x0010 → **Master Data Parity Error Cleared**. This is a standard bit cleared by the driver after reading; it does not indicate a fresh bus error.
+
+---
+
+### 7. Overall conclusions
+
+1. **Transmit unit is stuck** – hardware does not advance TDH even though the driver added descriptors.
+2. Link and PHY are fine; the stall occurs in the DMA/off-load logic.
+3. The kernel notices the delay (≥ 5 s) and logs “Detected Hardware Unit Hang”; a soft adapter reset usually follows. [Proxmox Support Forum](https://forum.proxmox.com/threads/e1000e-eno1-detected-hardware-unit-hang.59928/)
+
+---
+
+### 8. Likely causes and next steps
+
+
+|Most common cause|Quick work-arounds|
+|---|---|
+|Off-load bug (TSO/GSO/GRO) in certain 82579/219 revisions and the e1000e driver|`ethtool -K eno1 tso off gso off gro off`|
+|EEE / ASPM combined with VLAN bridges|add kernel params `pcie_aspm=off e1000e.SmartPowerDownEnable=0`|
+|Old NVM firmware|update BIOS/NVM (Intel Boot Util or OEM tool)|
+|Card assigned to wrong NUMA node|load module with `modprobe e1000e Node=0`|
+
+According to kernel.org reports, disabling **TSO** or all acceleration usually eliminates hangs, albeit at the expense of performance. If that doesn't help, a BIOS/firmware update or NIC replacement remains. [bugzilla.kernel.org](https://bugzilla.kernel.org/show_bug.cgi?id=118721)
+
+The log breaks down into (1) header indicating the hang, (2) queue indicators showing that the card is not starting from descriptor 66, (3) lock details, (4-6) registers confirming that the physical link is good. The most likely culprit is a bug in the off-loads; the first diagnostic step is to disable them with the **ethtool -K** command or update the driver/firmware.
+
+---
+---
+
 ## **Fixing or Mitigating the e1000e Hang**
 
 There are a few approaches to mitigate this issue.
@@ -138,6 +247,8 @@ If none of the above works, **consider adding a dedicated PCIe network card or U
 Below I will explain what offloads are and show how to improve network card stability by disabling offloads.
 
 ---
+---
+
 ## **Understanding Network Offloads**
 
 Network interface cards (NICs) are not just “dumb pipes” passing data — they have hardware capabilities designed to **reduce CPU workload** by handling some tasks in hardware.  These are called **offloads**.
