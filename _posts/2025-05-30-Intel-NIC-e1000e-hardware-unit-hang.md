@@ -282,10 +282,10 @@ Turning off offloads forces the **CPU** to handle all packet processing, making 
 
 ### **Example Command to Disable Offloads**
 
-You can use the following command to disable key offloads on a network interface (replace `eth0` with your interface name):
+You can use the following command to disable key offloads on a network interface (replace `eno1` with your interface name):
 
 ```
-ethtool -K eth0 gso off gro off tso off tx off rx off rxvlan off txvlan off sg off
+ethtool -K eno1 gso off gro off tso off tx off rx off rxvlan off txvlan off sg off
 ```
 
 |Flag|Meaning|
