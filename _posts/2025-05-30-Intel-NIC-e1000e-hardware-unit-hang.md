@@ -69,15 +69,21 @@ There are a few approaches to mitigate this issue.
 First, try adding a module parameter that’s known to reduce hangs.
 Edit (or create) the file:
 
-```/etc/modprobe.d/e1000e.conf```
+```
+/etc/modprobe.d/e1000e.conf
+```
 
 Add:
 
-```options e1000e InterruptThrottleRate=0,0 TxIntDelay=0 RxIntDelay=0```
+```
+options e1000e InterruptThrottleRate=0,0 TxIntDelay=0 RxIntDelay=0
+```
 
 Then rebuild initramfs and reload the module:
 
-```update-initramfs -u modprobe -r e1000e modprobe e1000e```
+```
+update-initramfs -u modprobe -r e1000e modprobe e1000e
+```
 
 Or simply **reboot**.
 
@@ -87,7 +93,9 @@ Or simply **reboot**.
 
 Sometimes, negotiation issues can cause hangs. You can **force the speed** and **duplex** (make sure the switch side matches):
 
-```ethtool -s eno1 speed 1000 duplex full autoneg off```
+```
+ethtool -s eno1 speed 1000 duplex full autoneg off
+```
 
 ⚠ **Note:** This may disable Wake-on-LAN (WOL), since WOL often relies on autonegotiation.
 
@@ -113,7 +121,9 @@ This reduces the chance of power-saving interactions freezing the NIC.
 I disabled all power saving features in BIOS.
 In Linux, you can also disable Energy-Efficient Ethernet:
 
-```ethtool --set-eee eno1 eee off```
+```
+ethtool --set-eee eno1 eee off
+```
 
 ---
 
