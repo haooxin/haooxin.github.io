@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Intel NIC e1000e hardware unit hang"
-date: 2025-05-30 12:17:00 +0200
+date: 2025-05-30 12:22:00 +0200
 categories: linux
 tags: homelab proxmox linux cli e1000e
 image:
