@@ -210,7 +210,7 @@ WantedBy=multi-user.target
 2. Enable the service:
 
 ```
-sudo systemctl enable ethtool-offload.service
+sudo systemctl daemon-reexec && sudo systemctl daemon-reload && sudo systemctl enable ethtool-offload.service
 ```
 
 This way, every time the system boots, the offload settings will be applied automatically.
